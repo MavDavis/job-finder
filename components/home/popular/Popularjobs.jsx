@@ -6,14 +6,16 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-
+import useFetch from "../../../hook/useFetch";
 import styles from "./popularjobs.style";
 import { useRouter } from "expo-router";
 import PopularJobsCard from "../../common/cards/popular/PopularJobCard";
 import { COLORS, SIZES } from "../../../constants";
 const Popularjobs = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { isLoading, error, data } = useFetch("search", {
+    query: "React developer",
+    num_pages: "1",
+  });
   const router = useRouter();
   return (
     <View style={styles.container}>
@@ -30,8 +32,8 @@ const Popularjobs = () => {
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
-            data={[1, 2, 3, 4, 5, 6, 7, 8]}
-            renderItem={({ item }) => <PopularJobsCard item />}
+            data={data}
+            renderItem={({ item }) => <PopularJobsCard item={item} />}
             keyExtractor={(item) => item?.job_id}
             horizontal
             contentContainerStyle={{ columnGap: SIZES.medium }}
