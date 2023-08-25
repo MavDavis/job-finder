@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import useFetch from "../../../hook/useFetch";
 import styles from "./popularjobs.style";
-import { useRouter } from "expo-router";
 import PopularJobsCard from "../../common/cards/popular/PopularJobCard";
 import { COLORS, SIZES } from "../../../constants";
 const Popularjobs = () => {
@@ -16,7 +15,6 @@ const Popularjobs = () => {
     query: "React developer",
     num_pages: "1",
   });
-  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.header}>

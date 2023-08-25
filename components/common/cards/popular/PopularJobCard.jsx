@@ -1,9 +1,14 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { useRouter } from "expo-router";
+
 import { checkImageUrl } from "../../../../utils/index";
 import styles from "./popularjobcard.style";
 
-const PopularJobCard = ({ item, handleCardPress, selectedJob }) => {
+const PopularJobCard = ({ item, selectedJob }) => {
+  const router = useRouter();
+
+  const handleCardPress = (item) => router.push(`/job-details/${item.job_id}`);
   return (
     <TouchableOpacity
       onPress={() => {
@@ -16,7 +21,7 @@ const PopularJobCard = ({ item, handleCardPress, selectedJob }) => {
           source={{
             uri: checkImageUrl(item?.employer_logo)
               ? item.employer_logo
-              : `https://picsum.photos/640/360`,
+              : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1W7diNGXJfMicpY9eXHKV4sqz05H.jpg",
           }}
           resizeMode="contain"
           style={styles.logoImage}

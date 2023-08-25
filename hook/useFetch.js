@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import dummy_data from "./assets/data";
 const useFetch = (endpoint, query) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,8 @@ const useFetch = (endpoint, query) => {
       setData(response.data.data);
     } catch (error) {
       console.error(error);
-      alert("there is an error");
+      setData(dummy_data.data);
+      alert("there is an error, using a dummy data");
     } finally {
       setIsLoading(false);
     }
