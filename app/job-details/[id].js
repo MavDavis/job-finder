@@ -47,7 +47,11 @@ export default function Jobdetails() {
         break;
     }
   };
-  const onRefresh = () => {};
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    reFetch();
+    setRefreshing(false);
+  }, []);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen

@@ -10,6 +10,7 @@ import {
   Welcome,
 } from "../components";
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -28,7 +29,7 @@ export default function Home() {
       />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, padding: SIZES.medium }}>
-          <Welcome />
+          <Welcome searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <Popularjobs />
           <Nearbyjobs />
         </View>
